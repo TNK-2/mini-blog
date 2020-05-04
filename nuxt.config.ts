@@ -24,6 +24,7 @@ const config: Configuration = {
   srcDir: 'src',
   // ビルド時にのみ使用するモジュール
   buildModules: ['@nuxt/typescript-build'],
+  css: ['reset.css'],
   // headの設定
   head: {
     meta: [
@@ -52,6 +53,8 @@ const config: Configuration = {
     port: NUXT_PORT,
     host: NUXT_HOST,
   },
+  modules: ['@nuxtjs/axios'],
+  axios: {},
 };
 
 module.exports = config;
