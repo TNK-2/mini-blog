@@ -1,0 +1,11 @@
+version: '3'
+services:
+  nuxt:
+    image: typescript-nuxtjs-boilerplate  # イメージ名、自分で決めることができる
+    build:  # Dockerfile のあるファイルの場所の指定
+      context: "." 
+      dockerfile: "Dockerfile"
+    env_file:  # env ファイルの指定
+      - "docker-compose.env"
+    ports:  # ポートフォワーディング設定
+      - 4000:4000

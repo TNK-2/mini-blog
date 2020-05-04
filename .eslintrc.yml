@@ -1,0 +1,33 @@
+root: true
+env:
+  browser: true
+  node: true
+extends:
+  - "@nuxtjs/eslint-config-typescript"
+  - plugin:prettier/recommended
+  - prettier/@typescript-eslint
+parserOptions:
+  warnOnUnsupportedTypeScriptVersion: false
+rules:
+  camelcase:
+    - error
+    - properties: always
+      ignoreDestructuring: true
+  no-useless-constructor: 'off'
+  require-await: 'off'
+  no-unused-vars: 'off'
+  "@typescript-eslint/no-unused-vars":
+    - warn
+    - args: after-used
+  "@typescript-eslint/no-inferrable-types": warn
+  import/named: 'off'
+  import/order: 'off'
+overrides:
+  # .vueファイルでは this を使用しないメソッドの定義を許容する
+  - files: ["*.vue"]
+    rules:
+      class-methods-use-this: 'off'
+  # @types 以下ではインターフェースのプレフィックスを強制しない
+  - files: [./src/@types/**/*.ts]
+    rules:
+      "@typescript-eslint/interface-name-prefix": 'off'
