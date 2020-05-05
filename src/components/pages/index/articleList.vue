@@ -1,7 +1,9 @@
 <template lang="pug">
 .article-list
-  .article(
+  nuxt-link.article(
     v-for="article in articles"
+    :to="`/article/${article._id}`"
+    tag="div"
     :key="article._id"
   )
     .title {{ article.title }}
@@ -26,6 +28,7 @@ export default class ArticleList extends Vue {
   & > .article {
     padding: 20px 10px;
     margin: 10px 0;
+    cursor: pointer;
     background-color: whitesmoke;
     border-radius: 5px;
   }
