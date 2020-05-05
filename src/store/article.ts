@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { IArticlePayload, IArticle } from '@/interfaces/api/Article';
+import { ENDPOINTS } from '@/constants/api/endpoints';
 
 /**
  * stateのインターフェース
@@ -25,12 +26,12 @@ export const mutations = {
 };
 
 export const actions = {
-  async fetchArticles(this: Vue, { commit }: any) {
-    const Articles = await this.$axios.$get('/endpoint');
+  async fetchArticles(this: Vue, { commit }: any): Promise<void> {
+    const Articles = await this.$axios.$get(ENDPOINTS.ARTICLES);
     commit('saveArticles', Articles);
   },
  
   async postArticle(this: Vue, _: any, payload: IArticlePayload) {
-    await this.$axios.$post('/endpoint', payload);
+    await this.$axios.$post(ENDPOINTS.ARTICLES, payload);
   },
 };

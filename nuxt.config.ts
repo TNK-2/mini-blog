@@ -14,7 +14,8 @@ const {
   // 本番では、AWS ECS → process.env に値が渡ってきて上書きされる
   // デフォルト値は開発用
   envName = 'local',
-  apiEndpointUrl = 'https://localhost:5555/api', // mock server
+  //apiEndpointUrl = 'https://localhost:5555/api', // mock server
+  apiEndpointUrl = 'https://crudcrud.com/api/dd764ea40236417d8a30395c18e8a6b8' // mock server
 } = process.env;
 
 const config: Configuration = {
@@ -54,7 +55,9 @@ const config: Configuration = {
     host: NUXT_HOST,
   },
   modules: ['@nuxtjs/axios'],
-  axios: {},
+  axios: {
+    baseURL: apiEndpointUrl,
+  },
 };
 
 module.exports = config;
